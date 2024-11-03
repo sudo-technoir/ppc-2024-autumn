@@ -43,8 +43,8 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Count_Sentences) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    // Проверка результатов
-    ASSERT_EQ(global_result[0], reference_result[0]);  // Ожидаем одинаковое количество предложений
+    
+    ASSERT_EQ(global_result[0], reference_result[0]); 
   }
 }
 
@@ -84,8 +84,8 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Empty_Text) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    // Проверка результатов
-    ASSERT_EQ(global_result[0], reference_result[0]);  // Ожидаем одинаковое количество предложений
+    
+    ASSERT_EQ(global_result[0], reference_result[0]);  
   }
 }
 
@@ -125,8 +125,8 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Multiple_Endings) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    // Проверка результатов
-    ASSERT_EQ(global_result[0], reference_result[0]);  // Ожидаем одинаковое количество предложений
+    
+    ASSERT_EQ(global_result[0], reference_result[0]);  
   }
 }
 
@@ -166,8 +166,8 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Single_Sentence) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    // Проверка результатов
-    ASSERT_EQ(global_result[0], reference_result[0]);  // Ожидаем одинаковое количество предложений
+    
+    ASSERT_EQ(global_result[0], reference_result[0]);  
   }
 }
 
@@ -207,7 +207,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_No_Punctuation) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    // Проверка результатов
-    ASSERT_EQ(global_result[0], reference_result[0]);  // Ожидаем одинаковое количество предложений
+    
+    ASSERT_EQ(global_result[0], reference_result[0]);  
   }
 }
