@@ -43,7 +43,6 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskSequential::post_processing(
   return true;
 }
 
-
 bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::pre_processing() {
   internal_order_test();
   if (world.rank() == 0) {
@@ -59,10 +58,10 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::pre_processing() {
   if (world.rank() == 0) {
     for (int proc = 1; proc < world.size(); ++proc) {
       size_t start_index = proc * delta;
-      size_t length = (proc == world.size() - 1) ? delta + remainder : delta;  
+      size_t length = (proc == world.size() - 1) ? delta + remainder : delta;
       world.send(proc, 0, text.data() + start_index, length);
     }
-    size_t length = (world.size() == 1) ? total_size : delta;  
+    size_t length = (world.size() == 1) ? total_size : delta;
     local_input_.assign(text.begin(), text.begin() + length);
   } else {
     size_t length = (world.rank() == world.size() - 1) ? delta + remainder : delta;
