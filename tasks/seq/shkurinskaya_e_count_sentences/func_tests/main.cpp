@@ -68,7 +68,7 @@ TEST(Sequential, Test_Complex_Punctuation) {
 }
 
 TEST(Sequential, Test_Empty_Sentence) {
-  std::string input_text = "";
+  std::string input_text;
   int expected_count = 0;
 
   std::vector<std::string> in(1, input_text);
