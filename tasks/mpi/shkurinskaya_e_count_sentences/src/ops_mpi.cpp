@@ -98,7 +98,7 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::run() {
     }
   }
 
-  reduce boost::mpi::reduce(world, local_res, res, std::plus<>(), 0);
+  boost::mpi::reduce(world, local_res, res, std::plus<>(), 0);
   return true;
 }
 
