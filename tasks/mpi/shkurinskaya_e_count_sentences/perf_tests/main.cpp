@@ -23,8 +23,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, test_pipeline_run) {
     taskDataPar->outputs_count.emplace_back(global_result.size());
   }
 
-  auto testMpiTaskParallel =
-      std::make_shared<shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel>(taskDataPar);
+  auto testMpiTaskParallel = std::make_shared<shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel>(taskDataPar);
   ASSERT_EQ(testMpiTaskParallel->validation(), true);
   testMpiTaskParallel->pre_processing();
   testMpiTaskParallel->run();
@@ -62,9 +61,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, test_task_run) {
     taskDataPar->outputs_count.emplace_back(global_result.size());
   }
 
-
-  auto testMpiTaskParallel =
-      std::make_shared<shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel>(taskDataPar);
+  auto testMpiTaskParallel = std::make_shared<shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel>(taskDataPar);
   ASSERT_EQ(testMpiTaskParallel->validation(), true);
   testMpiTaskParallel->pre_processing();
   testMpiTaskParallel->run();
