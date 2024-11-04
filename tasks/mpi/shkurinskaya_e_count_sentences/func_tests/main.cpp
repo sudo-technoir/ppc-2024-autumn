@@ -201,7 +201,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_No_Punctuation) {
     testMpiTaskSequential.pre_processing();
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
-    
+
     ASSERT_EQ(global_result[0], reference_result[0]);
   }
 }
