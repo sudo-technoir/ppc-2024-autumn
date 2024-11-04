@@ -43,8 +43,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Count_Sentences) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    
-    ASSERT_EQ(global_result[0], reference_result[0]); 
+    ASSERT_EQ(global_result[0], reference_result[0]);
   }
 }
 
@@ -56,7 +55,6 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Empty_Text) {
   // Create TaskData for parallel execution
   std::shared_ptr<ppc::core::TaskData> taskDataPar = std::make_shared<ppc::core::TaskData>();
   if (world.rank() == 0) {
-    input_text = "";
     taskDataPar->inputs.emplace_back(reinterpret_cast<uint8_t*>(&input_text));
     taskDataPar->inputs_count.emplace_back(input_text.size());
     taskDataPar->outputs.emplace_back(reinterpret_cast<uint8_t*>(global_result.data()));
@@ -84,8 +82,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Empty_Text) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    
-    ASSERT_EQ(global_result[0], reference_result[0]);  
+    ASSERT_EQ(global_result[0], reference_result[0]);
   }
 }
 
@@ -97,7 +94,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Multiple_Endings) {
   // Create TaskData for parallel execution
   std::shared_ptr<ppc::core::TaskData> taskDataPar = std::make_shared<ppc::core::TaskData>();
   if (world.rank() == 0) {
-    input_text = "Wow!!! Really??! That's amazing.";
+    input_text = "Wow!! Really?! That's amazing.";
     taskDataPar->inputs.emplace_back(reinterpret_cast<uint8_t*>(&input_text));
     taskDataPar->inputs_count.emplace_back(input_text.size());
     taskDataPar->outputs.emplace_back(reinterpret_cast<uint8_t*>(global_result.data()));
@@ -125,8 +122,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Multiple_Endings) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    
-    ASSERT_EQ(global_result[0], reference_result[0]);  
+    ASSERT_EQ(global_result[0], reference_result[0]);
   }
 }
 
@@ -166,8 +162,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Single_Sentence) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-    
-    ASSERT_EQ(global_result[0], reference_result[0]);  
+    ASSERT_EQ(global_result[0], reference_result[0]);
   }
 }
 
@@ -206,8 +201,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_No_Punctuation) {
     testMpiTaskSequential.pre_processing();
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
-
     
-    ASSERT_EQ(global_result[0], reference_result[0]);  
+    ASSERT_EQ(global_result[0], reference_result[0]);
   }
 }
