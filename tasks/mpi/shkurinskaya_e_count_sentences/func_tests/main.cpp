@@ -94,7 +94,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Multiple_Endings) {
   // Create TaskData for parallel execution
   std::shared_ptr<ppc::core::TaskData> taskDataPar = std::make_shared<ppc::core::TaskData>();
   if (world.rank() == 0) {
-    input_text = "Wow!! Really?! That's amazing.";
+    input_text = "Wow!! Really?! That's amazing...";
     taskDataPar->inputs.emplace_back(reinterpret_cast<uint8_t*>(&input_text));
     taskDataPar->inputs_count.emplace_back(input_text.size());
     taskDataPar->outputs.emplace_back(reinterpret_cast<uint8_t*>(global_result.data()));
