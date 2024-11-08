@@ -63,7 +63,8 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::validation() {
 
 bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::run() {
   internal_order_test();
-  size_t delta, remainder;
+  size_t delta;
+  size_t remainder;
   if (world.rank() == 0) {
     size_t total_size = text.size();
     delta = total_size / world.size();
