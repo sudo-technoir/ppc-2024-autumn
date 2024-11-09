@@ -12,7 +12,6 @@ using namespace std::chrono_literals;
 bool shkurinskaya_e_count_sentences_mpi::TestMPITaskSequential::pre_processing() {
   internal_order_test();
   text = *reinterpret_cast<std::string*>(taskData->inputs[0]);
-  res = 0;
   return true;
 }
 bool shkurinskaya_e_count_sentences_mpi::TestMPITaskSequential::validation() {
@@ -49,7 +48,6 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::pre_processing() {
     text = *reinterpret_cast<std::string*>(taskData->inputs[0]);
   }
   local_res = 0;
-  res = 0;
   return true;
 }
 
@@ -86,6 +84,9 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::run() {
     world.recv(0, 0, local_input_.data(), length);
   }
   bool in_end = false;
+  if (world.rank() != 0) {
+    world.recv(world.rank() - 1, 0, in_end);
+  }
   for (size_t i = 0; i < local_input_.size(); ++i) {
     char ch = local_input_[i];
     if (ch == '!' || ch == '?' || ch == '.') {
@@ -96,6 +97,9 @@ bool shkurinskaya_e_count_sentences_mpi::TestMPITaskParallel::run() {
     } else if (ch != ' ') {
       in_end = false;
     }
+  }
+  if (world.rank() != world.size() - 1) {
+    world.send(world.rank() + 1, 0, in_end);
   }
   boost::mpi::reduce(world, local_res, res, std::plus<>(), 0);
   return true;
