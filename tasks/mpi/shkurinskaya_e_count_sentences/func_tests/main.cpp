@@ -4,6 +4,7 @@
 #include <boost/mpi/environment.hpp>
 #include <string>
 #include <vector>
+#include <random>
 
 #include "mpi/shkurinskaya_e_count_sentences/include/ops_mpi.hpp"
 
