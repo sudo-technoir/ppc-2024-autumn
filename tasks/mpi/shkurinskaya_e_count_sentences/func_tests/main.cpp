@@ -38,7 +38,7 @@ TEST(shkurinskaya_e_count_sentences_mpi, Test_Random_String) {
     taskDataSeq->inputs_count.emplace_back(input_text.size());
     taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t*>(reference_result.data()));
     taskDataSeq->outputs_count.emplace_back(reference_result.size());
-    
+
     shkurinskaya_e_count_sentences_mpi::TestMPITaskSequential testMpiTaskSequential(taskDataSeq);
     ASSERT_EQ(testMpiTaskSequential.validation(), true);
     testMpiTaskSequential.pre_processing();
