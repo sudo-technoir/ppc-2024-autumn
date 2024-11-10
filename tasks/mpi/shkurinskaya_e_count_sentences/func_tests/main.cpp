@@ -2,9 +2,9 @@
 
 #include <boost/mpi/communicator.hpp>
 #include <boost/mpi/environment.hpp>
+#include <random>
 #include <string>
 #include <vector>
-#include <random>
 
 #include "mpi/shkurinskaya_e_count_sentences/include/ops_mpi.hpp"
 
