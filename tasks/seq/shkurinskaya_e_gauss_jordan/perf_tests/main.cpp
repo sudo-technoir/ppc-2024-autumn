@@ -31,7 +31,7 @@ std::vector<double> generate_invertible_matrix(int size) {
 }
 
 TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
-  int size = 500;
+  size_t size = 500;
 
   std::vector<double> matrix = generate_invertible_matrix(size);
 
@@ -67,11 +67,11 @@ TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
   perfAnalyzer->pipeline_run(perfAttr, perfResults);
   ppc::core::Perf::print_perf_statistic(perfResults);
 
-  ASSERT_EQ(output_data.size(), static_cast<unsigned long> size);
+  ASSERT_EQ(output_data.size(), size);
 }
 
 TEST(shkurinskaya_e_gauss_jordan, test_task_run) {
-  int size = 500;
+  size_t size = 500;
 
   auto matrix = generate_invertible_matrix(size);
 
@@ -106,5 +106,5 @@ TEST(shkurinskaya_e_gauss_jordan, test_task_run) {
   perfAnalyzer->task_run(perfAttr, perfResults);
   ppc::core::Perf::print_perf_statistic(perfResults);
 
-  ASSERT_EQ(output_data.size(), static_cast<unsigned long> size);
+  ASSERT_EQ(output_data.size(), size);
 }
