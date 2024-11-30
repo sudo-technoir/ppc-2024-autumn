@@ -1,15 +1,15 @@
 #include <gtest/gtest.h>
 
+#include <chrono>
+#include <iostream>
 #include <vector>
 #include <random>
 #include <memory>
-#include <chrono>
-#include <iostream>
 
 #include "core/perf/include/perf.hpp"
 #include "seq/shkurinskaya_e_gauss_jordan/include/ops_seq.hpp"
 
-  std::vector<double> generate_invertible_matrix(int size) {
+std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
   std::random_device rd;
   std::mt19937 gen(rd());
@@ -18,7 +18,7 @@
   for (int i = 0; i < size; ++i) {
     double row_sum = 0.0;
     double diag = (i * (size + 1) + i);
-    for (int j = 0; j < size+1; ++j) {
+    for (int j = 0; j < size + 1; ++j) {
       if (i != j) {
         matrix[i * (size + 1) + j] = dist(gen);
         row_sum += std::abs(matrix[i * (size + 1) + j]);
@@ -27,9 +27,8 @@
     matrix[diag] = row_sum + 1;
   }
 
-   return matrix;
+  return matrix;
 }
-
 
 TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
   int size = 500;
@@ -70,7 +69,6 @@ TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
 
   ASSERT_EQ(output_data.size(), size);
 }
-
 
 TEST(shkurinskaya_e_gauss_jordan, test_task_run) {
   int size = 500;
