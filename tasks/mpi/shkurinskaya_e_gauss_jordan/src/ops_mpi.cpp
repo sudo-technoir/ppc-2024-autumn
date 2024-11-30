@@ -37,7 +37,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::validation() {
               << taskData->inputs_count[1] << " elements." << std::endl;
     return false;
   }
-  
+
   auto* matrixData = reinterpret_cast<double*>(taskData->inputs[1]);
   for (int i = 0; i < numRows; ++i) {
     auto value = matrixData[i * numCols + i];
