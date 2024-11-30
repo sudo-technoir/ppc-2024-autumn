@@ -193,7 +193,6 @@ TEST(Parallel_Operations_MPI, Test_invalid_data) {
     taskDataPar->outputs_count.emplace_back(output_data.size());
   }
 
- 
   if (world.rank() == 0) {
     shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel testMpiTaskParallel(taskDataPar);
   ASSERT_FALSE(testMpiTaskParallel.validation());
