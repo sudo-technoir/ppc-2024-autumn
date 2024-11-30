@@ -12,7 +12,7 @@ TEST(shkurinskaya_e_gauss_jordan_seq, Test_2x2) {
   taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(&n));
   taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(in.data()));
   taskDataSeq->inputs_count.emplace_back(in.size() / (n + 1));
-  taskDataSeq->inputs_count.emplace_back(in.size()); 
+  taskDataSeq->inputs_count.emplace_back(in.size());
   taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(out.data()));
   taskDataSeq->outputs_count.emplace_back(out.size());
 
@@ -39,7 +39,7 @@ TEST(shkurinskaya_e_gauss_jordan_seq, Test_Gauss_3x3) {
   taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(&n));
   taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(in.data()));
   taskDataSeq->inputs_count.emplace_back(in.size() / (n + 1));
-  taskDataSeq->inputs_count.emplace_back(in.size()); 
+  taskDataSeq->inputs_count.emplace_back(in.size());
   taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(out.data()));
   taskDataSeq->outputs_count.emplace_back(out.size());
 
@@ -58,8 +58,8 @@ TEST(shkurinskaya_e_gauss_jordan_seq, Test_Gauss_3x3) {
 TEST(shkurinskaya_e_gauss_jordan_seq, Test_Gauss_5x5) {
   int n = 5;
 
-  std::vector<double> in = {2, 3, -1, 5, 1, 8, 4, -2, 3, -1, 2, 10, -1, 5, 2, 
-                            3, -4, -3, 3, 2, 4, 1, -2, 6, 1, 1, 1, 1, 1, 4};
+  std::vector<double> in = {2, 3,  -1, 5, 1, 8, 4, -2, 3, -1, 2, 10, -1, 5, 2,
+                            3, -4, -3, 3, 2, 4, 1, -2, 6, 1,  1, 1,  1,  1, 4};
   std::vector<double> expected_output = {2.0, 0.142, 0.285, 0.571, 1.0};
   std::vector<double> out(n, 0.0);
 
@@ -67,7 +67,7 @@ TEST(shkurinskaya_e_gauss_jordan_seq, Test_Gauss_5x5) {
   taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(&n));
   taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(in.data()));
   taskDataSeq->inputs_count.emplace_back(in.size() / (n + 1));
-  taskDataSeq->inputs_count.emplace_back(in.size()); 
+  taskDataSeq->inputs_count.emplace_back(in.size());
   taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(out.data()));
   taskDataSeq->outputs_count.emplace_back(out.size());
 
