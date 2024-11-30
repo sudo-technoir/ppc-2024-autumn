@@ -2,9 +2,9 @@
 
 #include <chrono>
 #include <iostream>
-#include <vector>
-#include <random>
 #include <memory>
+#include <random>
+#include <vector>
 
 #include "core/perf/include/perf.hpp"
 #include "seq/shkurinskaya_e_gauss_jordan/include/ops_seq.hpp"
