@@ -7,7 +7,6 @@
 
 #include "mpi/shkurinskaya_e_gauss_jordan/include/ops_mpi.hpp"
 
-
 std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
   std::random_device rd;
@@ -73,7 +72,7 @@ TEST(Parallel_Operations_MPI, Test_2x2) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-     for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i) {
       ASSERT_EQ(reference_data[i], output_data[i]);
     }
   }
