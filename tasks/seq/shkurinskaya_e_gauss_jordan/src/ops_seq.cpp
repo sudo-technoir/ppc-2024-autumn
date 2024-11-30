@@ -25,7 +25,7 @@ bool shkurinskaya_e_gauss_jordan_seq::TestTaskSequential::validation() {
     std::cout << "Validation failed: invalid dimensions (rows or columns cannot be zero or negative)!" << std::endl;
     return false;
   }
-  size_t expectedSize = static_cast<size_t>(numRows * numCols);
+  auto expectedSize = static_cast<size_t>(numRows * numCols);
   if (taskData->inputs_count[1] != expectedSize) {
     std::cout << "Validation failed: matrix size mismatch!" << std::endl;
     return false;
