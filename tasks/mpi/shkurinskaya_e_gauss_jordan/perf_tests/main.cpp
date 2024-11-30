@@ -1,5 +1,9 @@
 #include <gtest/gtest.h>
 
+#include <boost/mpi/communicator.hpp>
+#include <boost/mpi/environment.hpp>
+#include <boost/mpi/timer.hpp>
+
 #include <chrono>
 #include <iostream>
 #include <memory>
@@ -8,9 +12,6 @@
 
 #include "core/perf/include/perf.hpp"
 #include "mpi/shkurinskaya_e_gauss_jordan/include/ops_mpi.hpp"
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/timer.hpp>
 
 std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
@@ -41,7 +42,7 @@ TEST(shkurinskaya_e_gauss_jordan_mpi, test_pipeline_run) {
   std::vector<double> output_data(size, 0.0);
   // Create TaskData
 
-   std::shared_ptr<ppc::core::TaskData> taskDataPar = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskDataPar = std::make_shared<ppc::core::TaskData>();
 
   if (world.rank() == 0) {
     taskDataPar->inputs.emplace_back(reinterpret_cast<uint8_t *>(&size));
