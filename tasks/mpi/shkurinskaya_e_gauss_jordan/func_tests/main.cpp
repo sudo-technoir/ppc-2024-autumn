@@ -64,7 +64,7 @@ TEST(Parallel_Operations_MPI, Test_2x2) {
     taskDataSeq->inputs_count.emplace_back(matrix.size());
     taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(reference_data.data()));
     taskDataSeq->outputs_count.emplace_back(reference_data.size());
-    
+
     // Create Task
     shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential testMpiTaskSequential(taskDataSeq);
     ASSERT_EQ(testMpiTaskSequential.validation(), true);
@@ -195,9 +195,7 @@ TEST(Parallel_Operations_MPI, Test_invalid_data) {
 
   if (world.rank() == 0) {
     shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel testMpiTaskParallel(taskDataPar);
-  ASSERT_FALSE(testMpiTaskParallel.validation());
-} else {
-    ASSERT_TRUE(true) << "Process " << world.rank() << " completed successfully.";
+    ASSERT_FALSE(testMpiTaskParallel.validation());
   }
 }
 
