@@ -3,7 +3,6 @@
 #include <boost/mpi/communicator.hpp>
 #include <boost/mpi/environment.hpp>
 #include <boost/mpi/timer.hpp>
-
 #include <chrono>
 #include <iostream>
 #include <memory>
@@ -55,12 +54,10 @@ TEST(shkurinskaya_e_gauss_jordan_mpi, test_pipeline_run) {
 
   auto testMpiTaskParallel = std::make_shared<shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel>(taskDataPar);
 
-
   ASSERT_EQ(testMpiTaskParallel->validation(), true);
   testMpiTaskParallel->pre_processing();
   testMpiTaskParallel->run();
   testMpiTaskParallel->post_processing();
-
   // Create Perf attributes
   auto perfAttr = std::make_shared<ppc::core::PerfAttr>();
   perfAttr->num_running = 10;
