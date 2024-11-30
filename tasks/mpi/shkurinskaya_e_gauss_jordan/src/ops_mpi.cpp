@@ -37,12 +37,13 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::validation() {
               << taskData->inputs_count[1] << " elements." << std::endl;
     return false;
   }
+  
   auto* matrixData = reinterpret_cast<double*>(taskData->inputs[1]);
   for (int i = 0; i < numRows; ++i) {
     auto value = matrixData[i * numCols + i];
     if (value == 0.0) {
       std::cout << "Warning: Zero diagonal element at index " << i << std::endl;
-      return false;
+        return false;
     }
   }
   return true;
@@ -190,8 +191,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel::run() {
         localMatrix[i * (n + 1) + j] -= header[j] * factor;
       }
     }
-    boost::mpi::gatherv(world, localMatrix, matrix.data(), sendÑounts, displacements,
-                        0);
+    boost::mpi::gatherv(world, localMatrix, matrix.data(), sendCounts, displacements, 0);
   }
   for (int k = n - 1; k >= 0; --k) {
     if (world.rank() == 0) {
@@ -202,29 +202,29 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel::run() {
       int elements_per_process = ((remainderSize / (n + 1)) / world.size()) * (n + 1);
       int remainder = ((remainderSize / (n + 1)) % world.size()) * (n + 1);
 
-      sendÑounts = std::vector<int>(world.size(), elements_per_process);
+      sendCounts = std::vector<int>(world.size(), elements_per_process);
       for (int i = 0; i < remainder / (n + 1); i++) {
-        sendÑounts[i] += (n + 1);
+        sendCounts[i] += (n + 1);
       }
 
       displacements = std::vector<int>(world.size(), 0);
       for (int i = 1; i < world.size(); ++i) {
-        displacements[i] = displacements[i - 1] + sendÑounts[i - 1];
+        displacements[i] = displacements[i - 1] + sendCounts[i - 1];
       }
     }
     boost::mpi::broadcast(world, header, 0);
-    boost::mpi::broadcast(world, sendÑounts, 0);
+    boost::mpi::broadcast(world, sendCounts, 0);
     boost::mpi::broadcast(world, displacements, 0);
 
-    localMatrix.resize(sendÑounts[world.rank()]);
-    boost::mpi::scatterv(world, matrix, sendÑounts, displacements, localMatrix.data(), sendÑounts[world.rank()], 0);
+    localMatrix.resize(sendCounts[world.rank()]);
+    boost::mpi::scatterv(world, matrix, sendCounts, displacements, localMatrix.data(), sendCounts[world.rank()], 0);
     for (int i = 0; i < (localMatrix.size() / (n + 1)); ++i) {
       double factor = localMatrix[i * (n + 1) + k];
       for (int j = k; j <= n; ++j) {
         localMatrix[i * (n + 1) + j] -= header[j] * factor;
       }
     }
-    boost::mpi::gatherv(world, localMatrix, matrix.data(), sendÑounts, displacements, 0);
+    boost::mpi::gatherv(world, localMatrix, matrix.data(), sendCounts, displacements, 0);
   }
   return true;
 }
