@@ -185,7 +185,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel::run() {
 
     localMatrix.resize(sendСounts[world.rank()]);
     boost::mpi::scatterv(world, matrix, sendСounts, displacements, localMatrix.data(), sendСounts[world.rank()], 0);
-    for (int i = 0; i < (localMatrix.size() / (n + 1)); ++i) {
+    for (size_t i = 0; i < (localMatrix.size() / (n + 1)); ++i) {
       double factor = localMatrix[i * (n + 1) + k];
       for (int j = k; j <= n; ++j) {
         localMatrix[i * (n + 1) + j] -= header[j] * factor;
@@ -218,7 +218,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel::run() {
 
     localMatrix.resize(sendСounts[world.rank()]);
     boost::mpi::scatterv(world, matrix, sendСounts, displacements, localMatrix.data(), sendСounts[world.rank()], 0);
-    for (int i = 0; i < (localMatrix.size() / (n + 1)); ++i) {
+    for (size_t i = 0; i < (localMatrix.size() / (n + 1)); ++i) {
       double factor = localMatrix[i * (n + 1) + k];
       for (int j = k; j <= n; ++j) {
         localMatrix[i * (n + 1) + j] -= header[j] * factor;
