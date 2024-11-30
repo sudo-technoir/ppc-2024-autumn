@@ -43,7 +43,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::validation() {
     auto value = matrixData[i * numCols + i];
     if (value == 0.0) {
       std::cout << "Warning: Zero diagonal element at index " << i << std::endl;
-        return false;
+      return false;
     }
   }
   return true;
