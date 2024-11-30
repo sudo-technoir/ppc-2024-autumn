@@ -67,7 +67,7 @@ TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
   perfAnalyzer->pipeline_run(perfAttr, perfResults);
   ppc::core::Perf::print_perf_statistic(perfResults);
 
-  ASSERT_EQ(output_data.size(), static_cast<unsigned long>size);
+  ASSERT_EQ(output_data.size(), static_cast<unsigned long> size);
 }
 
 TEST(shkurinskaya_e_gauss_jordan, test_task_run) {
@@ -106,5 +106,5 @@ TEST(shkurinskaya_e_gauss_jordan, test_task_run) {
   perfAnalyzer->task_run(perfAttr, perfResults);
   ppc::core::Perf::print_perf_statistic(perfResults);
 
-  ASSERT_EQ(output_data.size(), static_cast<unsigned long>size);
+  ASSERT_EQ(output_data.size(), static_cast<unsigned long> size);
 }
