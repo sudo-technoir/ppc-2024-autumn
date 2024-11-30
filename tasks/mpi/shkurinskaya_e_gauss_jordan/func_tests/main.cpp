@@ -2,13 +2,13 @@
 
 #include <boost/mpi/communicator.hpp>
 #include <boost/mpi/environment.hpp>
-#include <vector>
 #include <random>
+#include <vector>
 
 #include "mpi/shkurinskaya_e_gauss_jordan/include/ops_mpi.hpp"
 
 
-  std::vector<double> generate_invertible_matrix(int size) {
+std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
   std::random_device rd;
   std::mt19937 gen(rd());
@@ -29,12 +29,11 @@
   return matrix;
 }
 
-
 TEST(Parallel_Operations_MPI, Test_2x2) {
   boost::mpi::communicator world;
   int size = 2;
 
-  std::vector<double> matrix = {2, 3, 5, 4, 1, 6}; 
+  std::vector<double> matrix = {2, 3, 5, 4, 1, 6};
 
   std::vector<double> output_data(size, 0.0);
   // Create TaskData
@@ -74,7 +73,7 @@ TEST(Parallel_Operations_MPI, Test_2x2) {
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
 
-   for (int i = 0; i < size; ++i) {
+     for (int i = 0; i < size; ++i) {
       ASSERT_EQ(reference_data[i], output_data[i]);
     }
   }
