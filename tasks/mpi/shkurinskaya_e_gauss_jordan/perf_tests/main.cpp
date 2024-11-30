@@ -104,7 +104,6 @@ TEST(shkurinskaya_e_gauss_jordan_mpi, test_task_run) {
   testMpiTaskParallel->run();
   testMpiTaskParallel->post_processing();
 
-
   // Create Perf attributes
   auto perfAttr = std::make_shared<ppc::core::PerfAttr>();
   perfAttr->num_running = 10;
