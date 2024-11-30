@@ -72,7 +72,7 @@ TEST(shkurinskaya_e_gauss_jordan_mpi, test_pipeline_run) {
   perfAnalyzer->pipeline_run(perfAttr, perfResults);
   if (world.rank() == 0) {
     ppc::core::Perf::print_perf_statistic(perfResults);
-    ASSERT_EQ(output_data.size(), size);
+    ASSERT_EQ(output_data.size(), static_cast<unsigned long>size);
   }
 }
 
@@ -116,6 +116,6 @@ TEST(shkurinskaya_e_gauss_jordan_mpi, test_task_run) {
   perfAnalyzer->task_run(perfAttr, perfResults);
   if (world.rank() == 0) {
     ppc::core::Perf::print_perf_statistic(perfResults);
-    ASSERT_EQ(output_data.size(), size);
+    ASSERT_EQ(output_data.size(), static_cast<unsigned long>size);
   }
 }
