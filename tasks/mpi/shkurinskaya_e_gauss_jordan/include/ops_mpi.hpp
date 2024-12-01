@@ -37,17 +37,6 @@ class TestMPITaskParallel : public ppc::core::Task {
   bool post_processing() override;
 
  private:
-  struct diffPiece {
-    int index;
-    int rank;
-    double value;
-    template <class Archive>
-    void serialize(Archive& ar, unsigned int version) {
-      ar & index;
-      ar & value;
-    }
-  };
-
   int n = 0;
   std::vector<double> matrix;
   std::vector<double> local_matrix;
