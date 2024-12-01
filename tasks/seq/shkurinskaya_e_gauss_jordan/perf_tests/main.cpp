@@ -37,7 +37,7 @@ std::vector<double> generate_invertible_matrix(int size) {
 TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
   size_t size = 500;
 
-  std::vector<double> matrix = generate_invertible_matrix(size);
+  std::vector<double> matrix = shkurinskaya_e_gauss_jordan_seq::generate_invertible_matrix(size);
 
   std::vector<double> output_data(size, 0.0);
 
@@ -77,7 +77,7 @@ TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
 TEST(shkurinskaya_e_gauss_jordan, test_task_run) {
   size_t size = 500;
 
-  auto matrix = generate_invertible_matrix(size);
+  auto matrix = shkurinskaya_e_gauss_jordan_seq::generate_invertible_matrix(size);
 
   std::vector<double> output_data(size, 0.0);
 
