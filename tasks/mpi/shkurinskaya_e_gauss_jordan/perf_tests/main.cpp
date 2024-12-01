@@ -12,6 +12,8 @@
 #include "core/perf/include/perf.hpp"
 #include "mpi/shkurinskaya_e_gauss_jordan/include/ops_mpi.hpp"
 
+namespace shkurinskaya_e_gauss_jordan_mpi {
+
 std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
   std::random_device rd;
@@ -32,6 +34,8 @@ std::vector<double> generate_invertible_matrix(int size) {
 
   return matrix;
 }
+
+} // namespace shkurinskaya_e_gauss_jordan_mpi
 
 TEST(shkurinskaya_e_gauss_jordan_mpi, test_pipeline_run) {
   boost::mpi::communicator world;
