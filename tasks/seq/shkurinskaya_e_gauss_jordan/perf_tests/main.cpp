@@ -32,7 +32,7 @@ std::vector<double> generate_invertible_matrix(int size) {
   return matrix;
 }
 
-}  // shkurinskaya_e_gauss_jordan_seq
+}  // namespace shkurinskaya_e_gauss_jordan_seq
 
 TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
   size_t size = 500;
