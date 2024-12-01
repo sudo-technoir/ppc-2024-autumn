@@ -7,6 +7,8 @@
 
 #include "mpi/shkurinskaya_e_gauss_jordan/include/ops_mpi.hpp"
 
+namespace shkurinskaya_e_gauss_jordan_mpi {
+
 std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
   std::random_device rd;
@@ -27,6 +29,8 @@ std::vector<double> generate_invertible_matrix(int size) {
 
   return matrix;
 }
+
+} // namespace shkurinskaya_e_gauss_jordan_mpi
 
 TEST(Parallel_Operations_MPI, Test_2x2) {
   boost::mpi::communicator world;
