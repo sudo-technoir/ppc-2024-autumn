@@ -9,7 +9,7 @@
 #include "core/perf/include/perf.hpp"
 #include "seq/shkurinskaya_e_gauss_jordan/include/ops_seq.hpp"
 
-namespace shkurinskaya_e_gauss_jordan_mpi {
+namespace shkurinskaya_e_gauss_jordan_seq {
 
 std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
@@ -32,7 +32,7 @@ std::vector<double> generate_invertible_matrix(int size) {
   return matrix;
 }
 
-} // shkurinskaya_e_gauss_jordan_mpi
+} // shkurinskaya_e_gauss_jordan_seq
 
 TEST(shkurinskaya_e_gauss_jordan_seq, test_pipeline_run) {
   size_t size = 500;
