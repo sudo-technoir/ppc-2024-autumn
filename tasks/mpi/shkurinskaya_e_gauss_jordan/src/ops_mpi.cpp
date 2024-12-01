@@ -12,8 +12,6 @@ using namespace std::chrono;
 #include <thread>
 #include <vector>
 
-using namespace std::chrono_literals;
-
 bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::pre_processing() {
   internal_order_test();
   n = *reinterpret_cast<int*>(taskData->inputs[0]);
