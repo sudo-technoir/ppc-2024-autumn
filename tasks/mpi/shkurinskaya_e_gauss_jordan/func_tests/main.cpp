@@ -30,7 +30,7 @@ std::vector<double> generate_invertible_matrix(int size) {
   return matrix;
 }
 
-} // namespace shkurinskaya_e_gauss_jordan_mpi
+}  // namespace shkurinskaya_e_gauss_jordan_mpi
 
 TEST(Parallel_Operations_MPI, Test_2x2) {
   boost::mpi::communicator world;
