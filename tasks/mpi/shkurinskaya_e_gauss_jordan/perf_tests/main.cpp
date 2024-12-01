@@ -40,7 +40,7 @@ std::vector<double> generate_invertible_matrix(int size) {
 TEST(shkurinskaya_e_gauss_jordan_mpi, test_pipeline_run) {
   boost::mpi::communicator world;
   size_t size = 500;
-  std::vector<double> matrix = generate_invertible_matrix(size);
+  std::vector<double> matrix = shkurinskaya_e_gauss_jordan_mpi::generate_invertible_matrix(size);
 
   std::vector<double> output_data(size, 0.0);
   // Create TaskData
@@ -84,7 +84,7 @@ TEST(shkurinskaya_e_gauss_jordan_mpi, test_task_run) {
   boost::mpi::communicator world;
   size_t size = 500;
 
-  std::vector<double> matrix = generate_invertible_matrix(size);
+  std::vector<double> matrix = shkurinskaya_e_gauss_jordan_mpi::generate_invertible_matrix(size);
 
   std::vector<double> output_data(size, 0.0);
 
