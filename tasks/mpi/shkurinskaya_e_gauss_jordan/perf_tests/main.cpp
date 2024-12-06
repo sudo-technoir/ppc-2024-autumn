@@ -18,7 +18,9 @@ std::vector<double> generate_invertible_matrix(int size) {
   std::vector<double> matrix(size * (size + 1));
   std::random_device rd;
   std::mt19937 gen(rd());
-  std::uniform_real_distribution<> dist(-100.0, 100.0);
+  double minVal = -100.0;
+  double maxVal = 100.0;
+  std::uniform_real_distribution<> dist(minVal, maxVal);
 
   for (int i = 0; i < size; ++i) {
     double row_sum = 0.0;
