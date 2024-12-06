@@ -142,10 +142,6 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel::validation() {
 bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel::run() {
   internal_order_test();
   boost::mpi::broadcast(world, n, 0);
-  std::vector<double> localMatrix;
-  std::vector<double> header;
-  std::vector<int> sendCounts;
-  std::vector<int> displacements;
   for (int k = 0; k < n; ++k) {
     if (world.rank() == 0) {
       int max_row = k;
