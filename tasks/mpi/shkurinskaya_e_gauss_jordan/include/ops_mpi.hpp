@@ -43,6 +43,10 @@ class TestMPITaskParallel : public ppc::core::Task {
   std::vector<double> solution;
   boost::mpi::communicator world;
   std::vector<double> diag_elements;
+  std::vector<double> localMatrix;
+  std::vector<double> header;
+  std::vector<int> sendCounts;
+  std::vector<int> displacements;
 };
 
 }  // namespace shkurinskaya_e_gauss_jordan_mpi
