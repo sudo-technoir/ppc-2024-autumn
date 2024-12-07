@@ -31,8 +31,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::validation() {
   }
   auto expectedSize = static_cast<size_t>(numRows * numCols);
   if (taskData->inputs_count[1] != expectedSize) {
-    std::cout << "Validation failed: matrix size mismatch! Expected " << expectedSize << " elements, but found "
-              << taskData->inputs_count[1] << " elements." << std::endl;
+    std::cout << "Validation failed: matrix size mismatch! << std::endl;
     return false;
   }
 
@@ -40,7 +39,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::validation() {
   for (int i = 0; i < numRows; ++i) {
     auto value = matrixData[i * numCols + i];
     if (value == 0.0) {
-      std::cout << "Warning: Zero diagonal element at index " << i << std::endl;
+      std::cout << "Warning: Zero diagonal element" << std::endl;
       return false;
     }
   }
