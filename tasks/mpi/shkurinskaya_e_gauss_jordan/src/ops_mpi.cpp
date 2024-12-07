@@ -32,7 +32,7 @@ bool shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential::validation() {
   auto expectedSize = static_cast<size_t>(numRows * numCols);
   if (taskData->inputs_count[1] != expectedSize) {
     std::cout << "Validation failed: matrix size mismatch! << std::endl;
-      return false;
+        return false;
   }
 
   auto* matrixData = reinterpret_cast<double*>(taskData->inputs[1]);
