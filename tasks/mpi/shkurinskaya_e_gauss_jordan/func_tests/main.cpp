@@ -203,6 +203,23 @@ TEST(Parallel_Operations_MPI, Test_invalid_data) {
     shkurinskaya_e_gauss_jordan_mpi::TestMPITaskParallel testMpiTaskParallel(taskDataPar);
     ASSERT_FALSE(testMpiTaskParallel.validation());
   }
+
+  if (world.rank() == 0) {
+    // Create data
+    std::vector<double> reference_data(size, 0.0);
+    // Create TaskData
+    std::shared_ptr<ppc::core::TaskData> taskDataSeq = std::make_shared<ppc::core::TaskData>();
+    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(&size));
+    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(matrix.data()));
+    taskDataSeq->inputs_count.emplace_back(matrix.size() / (size + 1));
+    taskDataSeq->inputs_count.emplace_back(matrix.size());
+    taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(reference_data.data()));
+    taskDataSeq->outputs_count.emplace_back(reference_data.size());
+
+    // Create Task
+    shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential testMpiTaskSequential(taskDataSeq);
+    ASSERT_FALSE(testMpiTaskSequential.validation());
+  }
 }
 
 TEST(Parallel_Operations_MPI, Test_not_enough_data) {
@@ -229,6 +246,23 @@ TEST(Parallel_Operations_MPI, Test_not_enough_data) {
   } else {
     ASSERT_TRUE(true) << "Process " << world.rank() << " completed successfully.";
   }
+
+  if (world.rank() == 0) {
+    // Create data
+    std::vector<double> reference_data(size, 0.0);
+    // Create TaskData
+    std::shared_ptr<ppc::core::TaskData> taskDataSeq = std::make_shared<ppc::core::TaskData>();
+    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(&size));
+    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(matrix.data()));
+    taskDataSeq->inputs_count.emplace_back(matrix.size() / (size + 1));
+    taskDataSeq->inputs_count.emplace_back(matrix.size());
+    taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(reference_data.data()));
+    taskDataSeq->outputs_count.emplace_back(reference_data.size());
+
+    // Create Task
+    shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential testMpiTaskSequential(taskDataSeq);
+    ASSERT_FALSE(testMpiTaskSequential.validation());
+  }
 }
 
 TEST(Parallel_Operations_MPI, Test_zero_diag) {
@@ -254,5 +288,22 @@ TEST(Parallel_Operations_MPI, Test_zero_diag) {
     ASSERT_FALSE(testMpiTaskParallel.validation());
   } else {
     ASSERT_TRUE(true) << "Process " << world.rank() << " completed successfully.";
+  }
+
+  if (world.rank() == 0) {
+    // Create data
+    std::vector<double> reference_data(size, 0.0);
+    // Create TaskData
+    std::shared_ptr<ppc::core::TaskData> taskDataSeq = std::make_shared<ppc::core::TaskData>();
+    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(&size));
+    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(matrix.data()));
+    taskDataSeq->inputs_count.emplace_back(matrix.size() / (size + 1));
+    taskDataSeq->inputs_count.emplace_back(matrix.size());
+    taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(reference_data.data()));
+    taskDataSeq->outputs_count.emplace_back(reference_data.size());
+
+    // Create Task
+    shkurinskaya_e_gauss_jordan_mpi::TestMPITaskSequential testMpiTaskSequential(taskDataSeq);
+    ASSERT_FALSE(testMpiTaskSequential.validation());
   }
 }
